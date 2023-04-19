@@ -9,6 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6200945914331341538}
+  - component: {fileID: 3399669437303235710}
+  - component: {fileID: 2234400618887188703}
   m_Layer: 0
   m_Name: piecePrefab
   m_TagString: Untagged
@@ -25,13 +27,46 @@ Transform:
   m_GameObject: {fileID: 1303921836911006770}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 1.2, y: 1.2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2487012653395935288}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3399669437303235710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303921836911006770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b15e6121306f4ca419df046cbbcacdfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2234400618887188703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303921836911006770}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6febefea49a82ce498b19080f2bc328d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  recipeSprites:
+  - recipe: 0
+    sprite: {fileID: 21300000, guid: 80ff18ddf28f9c740bd7f1cefefa9c8b, type: 3}
+  - recipe: 1
+    sprite: {fileID: 21300000, guid: e865b0dc2b05c0b48b9514c845be8f72, type: 3}
+  - recipe: 2
+    sprite: {fileID: 21300000, guid: aaef702b094a3124b8dffb3867c83c58, type: 3}
+  - recipe: 3
+    sprite: {fileID: 21300000, guid: 6bdc91bf44ab7ab4185ade15c3c5f964, type: 3}
 --- !u!1 &8035246234853254340
 GameObject:
   m_ObjectHideFlags: 0
@@ -43,7 +78,7 @@ GameObject:
   - component: {fileID: 2487012653395935288}
   - component: {fileID: 2667287148814996711}
   m_Layer: 0
-  m_Name: alien_recipe
+  m_Name: piece
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,6 +148,6 @@ SpriteRenderer:
   m_Size: {x: 5, y: 5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
