@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class recipeData : MonoBehaviour
 {
-    // Start is called before the first frame update
+   
     public enum recipeType{
         A,
         B,

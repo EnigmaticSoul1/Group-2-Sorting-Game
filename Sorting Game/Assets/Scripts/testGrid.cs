@@ -6,6 +6,7 @@ public class testGrid : MonoBehaviour
 {
     // Start is called before the first frame update
     public enum PieceType{
+        EMPTY,
         NORMAL,
         COUNT,
     };
@@ -38,7 +39,7 @@ public class testGrid : MonoBehaviour
 
         for (int x = 0; x < xDim; x++){
             for (int y = 0; y < yDim; y++){
-                GameObject background = (GameObject)Instantiate (backgroundPrefab, GetWorldPostion(x, y), Quaternion.identity);
+                GameObject background = (GameObject)Instantiate (backgroundPrefab, GetWorldPosition(x, y), Quaternion.identity);
                 background.transform.parent = transform;
             }
         }
@@ -46,31 +47,85 @@ public class testGrid : MonoBehaviour
         pieces = new recipePiece[xDim, yDim];
         for (int x = 0; x < xDim; x++){
             for (int y = 0; y < yDim; y++){
-                GameObject newPiece = (GameObject)Instantiate(piecePrefabDict[PieceType.NORMAL], GetWorldPostion(x, y), Quaternion.identity);
-                newPiece.name = "Piece(" + x + "," + y + ")";
-                newPiece.transform.parent = transform;
-
-                pieces[x, y] = newPiece.GetComponent<recipePiece>();
-                pieces[x, y].init(x, y, this, PieceType.NORMAL);
-
-                if(pieces[x, y].isMovable()){
-                    pieces[x, y].MovableComponent.Move(x, y);
-                }
-
-                if (pieces [x, y].isRecipe()){
-                    pieces [x, y].RecipeComponent.SetType((recipeData.recipeType)Random.Range(0, pieces [x, y].RecipeComponent.NumTypes));
-                }
+                spawnNewPiece(x, y, PieceType.EMPTY);
             }
         }
+        Fill();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+       
+            
     }
 
-    public Vector2 GetWorldPostion(int x, int y){
+    //move the piece one space
+    public void Fill()
+    {
+        while (fillStep())
+        {
+
+        }
+    }
+
+    //fills the board
+    public bool fillStep()
+    {
+        bool movedPiece = false;
+
+        for (int y = yDim - 2; y >= 0; y--)
+        {
+            for (int x = 0; x < xDim; x++)
+            {
+                recipePiece piece = pieces[x, y];
+
+                if (piece.isMovable())
+                {
+                    recipePiece pieceBelow = pieces[x, y +1];
+
+                    if (pieceBelow.Type == PieceType.EMPTY)
+                    {
+                        piece.MovableComponent.Move(x, y + 1);
+                        pieces[x, y + 1] = piece;
+                        spawnNewPiece(x, y, PieceType.EMPTY);
+                        movedPiece = true;
+                    }
+                }
+            }
+        }
+
+        for (int x = 0; x < xDim; x++)
+        {
+            recipePiece pieceBelow = pieces[x, 0];
+
+            if (pieceBelow.Type == PieceType.EMPTY)
+            {
+                GameObject newPiece = (GameObject)Instantiate(piecePrefabDict[PieceType.NORMAL], GetWorldPosition(x, -1), Quaternion.identity);
+                newPiece.transform.parent = transform;
+
+                pieces[x, 0] = newPiece.GetComponent<recipePiece>();
+                pieces[x, 0].init(x, -1, this, PieceType.NORMAL);
+                pieces[x, 0].MovableComponent.Move(x, 0);
+                pieces[x, 0].RecipeComponent.SetType((recipeData.recipeType)Random.Range(0, pieces[x, 0].RecipeComponent.NumTypes));
+                movedPiece = true;
+            }
+        }
+        return movedPiece;
+    }
+
+    public Vector2 GetWorldPosition(int x, int y){
         return new Vector2 (transform.position.x - xDim / 2.0f + x, transform.position.y + yDim / 2.0f -y);
+    }
+
+    public recipePiece spawnNewPiece(int x, int y, PieceType type)
+    {
+        GameObject newPiece = (GameObject)Instantiate(piecePrefabDict[type], GetWorldPosition(x, y), Quaternion.identity);
+        newPiece.transform.parent = transform;
+
+        pieces[x, y] = newPiece.GetComponent<recipePiece>();
+        pieces[x, y].init (x, y, this, type);
+
+        return pieces[x, y];
     }
 }
