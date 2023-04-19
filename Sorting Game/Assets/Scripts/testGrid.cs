@@ -24,7 +24,7 @@ public class testGrid : MonoBehaviour
     public GameObject backgroundPrefab;
     private Dictionary<PieceType, GameObject> piecePrefabDict;
 
-    private GameObject[,] pieces;
+    private recipePiece[,] pieces;
 
     void Start()
     {
@@ -38,17 +38,24 @@ public class testGrid : MonoBehaviour
 
         for (int x = 0; x < xDim; x++){
             for (int y = 0; y < yDim; y++){
-                GameObject background = (GameObject)Instantiate (backgroundPrefab, new Vector3(x, y, 0), Quaternion.identity);
+                GameObject background = (GameObject)Instantiate (backgroundPrefab, GetWorldPostion(x, y), Quaternion.identity);
                 background.transform.parent = transform;
             }
         }
 
-        pieces = new GameObject[xDim, yDim];
+        pieces = new recipePiece[xDim, yDim];
         for (int x = 0; x < xDim; x++){
             for (int y = 0; y < yDim; y++){
-                pieces [x, y] = (GameObject)Instantiate(piecePrefabDict[PieceType.NORMAL], new Vector3(x, y, 0), Quaternion.identity);
-                pieces [x, y].name = "Piece(" + x + "," + y + ")";
-                pieces [x, y].transform.parent = transform;
+                GameObject newPiece = (GameObject)Instantiate(piecePrefabDict[PieceType.NORMAL], GetWorldPostion(x, y), Quaternion.identity);
+                newPiece.name = "Piece(" + x + "," + y + ")";
+                newPiece.transform.parent = transform;
+
+                pieces[x, y] = newPiece.GetComponent<recipePiece>();
+                pieces[x, y].init(x, y, this, PieceType.NORMAL);
+
+                if (pieces [x, y].isRecipe()){
+                    pieces [x, y].RecipeComponent.SetType((recipeData.recipeType)Random.Range(0, pieces [x, y].RecipeComponent.NumTypes));
+                }
             }
         }
     }
@@ -57,5 +64,9 @@ public class testGrid : MonoBehaviour
     void Update()
     {
         
+    }
+
+    Vector2 GetWorldPostion(int x, int y){
+        return new Vector2 (transform.position.x - xDim / 2.0f + x, transform.position.y + yDim / 2.0f -y);
     }
 }
