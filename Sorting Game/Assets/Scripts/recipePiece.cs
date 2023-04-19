@@ -42,6 +42,7 @@ public class recipePiece : MonoBehaviour
         get { return grid; }
     }
 
+    //gives the movoble piece component
     private movablePiece movableComponent;
 
     public movablePiece MovableComponent
@@ -56,7 +57,7 @@ public class recipePiece : MonoBehaviour
     }
 
     
-
+    //References movablePiece and recipeData script
     void Awake()
     {
         movableComponent = GetComponent<movablePiece>();
@@ -86,6 +87,7 @@ public class recipePiece : MonoBehaviour
         type = _type;
     }
 
+    //For pieces who have movable component
     public bool isMovable()
     {
         return movableComponent != null;

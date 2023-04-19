@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class movablePiece : MonoBehaviour 
 {
- 
+    //Variables
     private recipePiece piece;
 
-    //Awake references the recipe piece
+    //Awake references the recipePiece script
     void Awake()
     {
         piece = GetComponent<recipePiece>();

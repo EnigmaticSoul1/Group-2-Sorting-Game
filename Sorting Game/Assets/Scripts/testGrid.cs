@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class testGrid : MonoBehaviour
 {
-    // Start is called before the first frame update
+   
     public enum PieceType{
         EMPTY,
         NORMAL,
@@ -27,6 +27,7 @@ public class testGrid : MonoBehaviour
 
     private recipePiece[,] pieces;
 
+    // Start is called before the first frame update
     void Start()
     {
         piecePrefabDict = new Dictionary<PieceType, GameObject> ();
@@ -116,10 +117,12 @@ public class testGrid : MonoBehaviour
         return movedPiece;
     }
 
+    //gets the position in the scene
     public Vector2 GetWorldPosition(int x, int y){
         return new Vector2 (transform.position.x - xDim / 2.0f + x, transform.position.y + yDim / 2.0f -y);
     }
 
+    //Spawns pieces
     public recipePiece spawnNewPiece(int x, int y, PieceType type)
     {
         GameObject newPiece = (GameObject)Instantiate(piecePrefabDict[type], GetWorldPosition(x, y), Quaternion.identity);
