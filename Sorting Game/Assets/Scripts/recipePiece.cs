@@ -8,12 +8,26 @@ public class recipePiece : MonoBehaviour
     private int x;
     private int y;
 
-    private int X {
+    public int X {
         get { return X; }
+        set
+        {
+            if (isMovable())
+            {
+                x = value;
+            }
+        }
     }
 
-    private int Y{
+    public int Y {
         get { return Y; }
+        set
+        {
+            if (isMovable())
+            {
+                y = value;
+            }
+        }
     }
 
     private testGrid.PieceType type;
@@ -28,16 +42,31 @@ public class recipePiece : MonoBehaviour
         get { return grid; }
     }
 
+    private movablePiece movableComponent;
+
+    public movablePiece MovableComponent
+    {
+        get { return movableComponent; }
+    }
+
     private recipeData recipeComponent;
 
-    public recipeData RecipeComponent{
+    public recipeData RecipeComponent {
         get { return recipeComponent; }
     }
 
-    void Awake(){
+    
+
+    void Awake()
+    {
+        movableComponent = GetComponent<movablePiece>();
         recipeComponent = GetComponent<recipeData>();
     }
+
     
+
+   
+   
     void Start()
     {
         
@@ -57,7 +86,14 @@ public class recipePiece : MonoBehaviour
         type = _type;
     }
 
+    public bool isMovable()
+    {
+        return movableComponent != null;
+    }
+
     public bool isRecipe(){
         return recipeComponent != null;
     }
+
+    
 }

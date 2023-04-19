@@ -53,6 +53,10 @@ public class testGrid : MonoBehaviour
                 pieces[x, y] = newPiece.GetComponent<recipePiece>();
                 pieces[x, y].init(x, y, this, PieceType.NORMAL);
 
+                if(pieces[x, y].isMovable()){
+                    pieces[x, y].MovableComponent.Move(x, y);
+                }
+
                 if (pieces [x, y].isRecipe()){
                     pieces [x, y].RecipeComponent.SetType((recipeData.recipeType)Random.Range(0, pieces [x, y].RecipeComponent.NumTypes));
                 }
@@ -66,7 +70,7 @@ public class testGrid : MonoBehaviour
         
     }
 
-    Vector2 GetWorldPostion(int x, int y){
+    public Vector2 GetWorldPostion(int x, int y){
         return new Vector2 (transform.position.x - xDim / 2.0f + x, transform.position.y + yDim / 2.0f -y);
     }
 }
