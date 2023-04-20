@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class testGrid : MonoBehaviour
 {
    
@@ -20,12 +21,16 @@ public class testGrid : MonoBehaviour
 
     public int xDim;
     public int yDim;
+    public float fillTime;
 
     public PiecePrefab[] piecePrefabs;
     public GameObject backgroundPrefab;
     private Dictionary<PieceType, GameObject> piecePrefabDict;
 
     private recipePiece[,] pieces;
+
+    private recipePiece pressedPiece;
+    private recipePiece enteredPiece;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +56,7 @@ public class testGrid : MonoBehaviour
                 spawnNewPiece(x, y, PieceType.EMPTY);
             }
         }
-        Fill();
+        StartCoroutine(Fill());
     }
 
     // Update is called once per frame
@@ -62,11 +67,11 @@ public class testGrid : MonoBehaviour
     }
 
     //move the piece one space
-    public void Fill()
+    public IEnumerator Fill()
     {
         while (fillStep())
         {
-
+            yield return new WaitForSeconds(fillTime);
         }
     }
 
@@ -88,7 +93,7 @@ public class testGrid : MonoBehaviour
                     if (pieceBelow.Type == PieceType.EMPTY)
                     {
                         Destroy(pieceBelow.gameObject);
-                        piece.MovableComponent.Move(x, y + 1);
+                        piece.MovableComponent.Move(x, y + 1, fillTime);
                         pieces[x, y + 1] = piece;
                         spawnNewPiece(x, y, PieceType.EMPTY);
                         movedPiece = true;
@@ -109,8 +114,8 @@ public class testGrid : MonoBehaviour
 
                 pieces[x, 0] = newPiece.GetComponent<recipePiece>();
                 pieces[x, 0].init(x, -1, this, PieceType.NORMAL);
-                pieces[x, 0].MovableComponent.Move(x, 0);
-                pieces[x, 0].RecipeComponent.SetType((recipeData.recipeType)Random.Range(0, pieces[x, 0].RecipeComponent.NumTypes));
+                pieces[x, 0].MovableComponent.Move(x, 0, fillTime);
+                pieces[x, 0].RecipeComponent.SetType ((recipeData.recipeType)Random.Range(0, pieces[x, 0].RecipeComponent.NumTypes));
                 movedPiece = true;
             }
         }
@@ -132,5 +137,49 @@ public class testGrid : MonoBehaviour
         pieces[x, y].init (x, y, this, type);
 
         return pieces[x, y];
+    }
+
+    //Checks the adjacent tiles of the recipe
+    public bool isAdjacent(recipePiece piece1, recipePiece piece2)
+    {
+        return (piece1.X == piece2.X && (int)Mathf.Abs(piece1.Y - piece2.Y) == 1)
+        || (piece1.Y == piece2.Y && (int)Mathf.Abs(piece1.X - piece2.Y) == 1);
+    }
+
+    //Swaps the pieces
+    public void swapPieces(recipePiece piece1, recipePiece piece2)
+    {
+        if (piece1.isMovable() && piece2.isMovable())
+        {
+            pieces [piece1.X, piece1.Y] = piece2;
+            pieces [piece2.X, piece2.Y] = piece1;
+
+            int piece1X = piece1.X;
+            int piece1Y = piece1.Y;
+
+            piece1.MovableComponent.Move(piece2.X, piece2.Y, fillTime);
+            piece2.MovableComponent.Move(piece1X, piece1Y, fillTime);
+        }
+    }
+
+    //when a piece is pressed
+    public void pressPiece(recipePiece piece)
+    {
+        pressedPiece = piece;
+    }
+
+    //when a piece is entered
+    public void enterPiece (recipePiece piece)
+    {
+        enteredPiece = piece;
+    }
+
+    //when the mouse releases the piece
+    public void releasePiece()
+    {
+        if (isAdjacent(pressedPiece, enteredPiece))
+        {
+            swapPieces(pressedPiece, enteredPiece);
+        }
     }
 }

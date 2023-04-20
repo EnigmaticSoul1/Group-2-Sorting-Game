@@ -240,6 +240,8 @@ MonoBehaviour:
   yDim: 8
   piecePrefabs:
   - type: 0
+    prefab: {fileID: 4800567186863805959, guid: b9f2f7ebe763ff24197428ea41d4e6dd, type: 3}
+  - type: 1
     prefab: {fileID: 1303921836911006770, guid: 5b87f79c33a0dff43bc9449d005bd83b, type: 3}
   backgroundPrefab: {fileID: 6619613498218074936, guid: 76289ecde0da61f4681b78c498873fc1, type: 3}
 --- !u!4 &961845095

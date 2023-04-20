@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class recipePiece : MonoBehaviour
 {
-    // Start is called before the first frame update
+    
     private int x;
     private int y;
 
     public int X {
-        get { return X; }
+        get { return x; }
         set
         {
             if (isMovable())
@@ -20,7 +20,7 @@ public class recipePiece : MonoBehaviour
     }
 
     public int Y {
-        get { return Y; }
+        get { return y; }
         set
         {
             if (isMovable())
@@ -42,7 +42,7 @@ public class recipePiece : MonoBehaviour
         get { return grid; }
     }
 
-    //gives the movoble piece component
+    //gives the movable piece component
     private movablePiece movableComponent;
 
     public movablePiece MovableComponent
@@ -64,10 +64,10 @@ public class recipePiece : MonoBehaviour
         recipeComponent = GetComponent<recipeData>();
     }
 
-    
 
-   
-   
+
+
+    // Start is called before the first frame update
     void Start()
     {
         
@@ -85,6 +85,26 @@ public class recipePiece : MonoBehaviour
         y = _y;
         grid = _grid;
         type = _type;
+    }
+
+
+    //when mouse enters the element
+    void OnMouseEnter()
+    {
+        grid.enterPiece(this);
+        
+    }
+
+    //when mouse presses down the recipe
+    void OnMouseDown()
+    {
+        grid.pressPiece(this);
+    }
+
+    //When mouse releases the press of the recipe
+    void OnMouseUp()
+    {
+        grid.releasePiece();
     }
 
     //For pieces who have movable component
