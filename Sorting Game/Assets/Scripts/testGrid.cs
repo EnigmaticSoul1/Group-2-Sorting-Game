@@ -69,9 +69,17 @@ public class testGrid : MonoBehaviour
     //move the piece one space
     public IEnumerator Fill()
     {
-        while (fillStep())
-        {
+        bool needsRefill = true;
+
+        while (needsRefill) {
             yield return new WaitForSeconds(fillTime);
+
+            while (fillStep())
+            {
+                yield return new WaitForSeconds(fillTime);
+            }
+
+            needsRefill = ClearAllValidMatches();
         }
     }
 
@@ -160,6 +168,10 @@ public class testGrid : MonoBehaviour
 
                 piece1.MovableComponent.Move(piece2.X, piece2.Y, fillTime);
                 piece2.MovableComponent.Move(piece1X, piece1Y, fillTime);
+
+                ClearAllValidMatches();
+
+                StartCoroutine(Fill());
             } else {
                 pieces [piece1.X, piece1.Y] = piece1;
                 pieces [piece2.X, piece2.Y] = piece2;
@@ -344,5 +356,38 @@ public class testGrid : MonoBehaviour
         }
 
         return null;
+    }
+
+    public bool ClearAllValidMatches() {
+        bool needsRefill = false;
+
+        for (int y = 0; y < yDim; y++) {
+            for (int x = 0; x < xDim; x++) {
+                if (pieces [x, y].isClearable()) {
+                    List<recipePiece> match = GetMatch(pieces[x, y], x, y);
+
+                    if (match != null) {
+                        for (int i = 0; i < match.Count; i++) {
+                            if (ClearPiece(match[i].X, match[i].Y)) {
+                                needsRefill = true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        return needsRefill;
+    }
+
+    public bool ClearPiece(int x, int y) {
+        if (pieces[x, y].isClearable() && !pieces[x, y].ClearableComponent.IsBeingCleared) {
+            pieces [x, y].ClearableComponent.Clear();
+            spawnNewPiece(x, y, PieceType.EMPTY);
+
+            return true;
+        }
+
+        return false;
     }
 }
