@@ -56,12 +56,18 @@ public class recipePiece : MonoBehaviour
         get { return recipeComponent; }
     }
 
+    private clearablePiece clearableComponent;
+
+    public clearablePiece ClearableComponent {
+        get {return clearableComponent;}
+    }
     
     //References movablePiece and recipeData script
     void Awake()
     {
         movableComponent = GetComponent<movablePiece>();
         recipeComponent = GetComponent<recipeData>();
+        clearableComponent = GetComponent<clearablePiece>();
     }
 
 
@@ -117,5 +123,7 @@ public class recipePiece : MonoBehaviour
         return recipeComponent != null;
     }
 
-    
+    public bool isClearable() {
+        return clearableComponent != null;
+    }
 }
