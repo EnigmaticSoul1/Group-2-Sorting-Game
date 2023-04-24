@@ -9,14 +9,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6200945914331341538}
-  - component: {fileID: 3399669437303235710}
-  - component: {fileID: 2234400618887188703}
-  - component: {fileID: -3036597633179120145}
   - component: {fileID: 9022540136217170737}
   - component: {fileID: 222779755}
-  - component: {fileID: 7242381166860987263}
+  - component: {fileID: 4541067949362767470}
   m_Layer: 0
-  m_Name: piecePrefab
+  m_Name: customerPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38,51 +35,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3399669437303235710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303921836911006770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b15e6121306f4ca419df046cbbcacdfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2234400618887188703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303921836911006770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6febefea49a82ce498b19080f2bc328d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  recipeSprites:
-  - recipe: 0
-    sprite: {fileID: 21300000, guid: 732745ea52dc3fb41af8b4ce931aa50b, type: 3}
-  - recipe: 1
-    sprite: {fileID: 21300000, guid: e865b0dc2b05c0b48b9514c845be8f72, type: 3}
-  - recipe: 2
-    sprite: {fileID: 21300000, guid: aaef702b094a3124b8dffb3867c83c58, type: 3}
-  - recipe: 3
-    sprite: {fileID: 21300000, guid: 6bdc91bf44ab7ab4185ade15c3c5f964, type: 3}
---- !u!114 &-3036597633179120145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1303921836911006770}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd2ff53fb32cd214db686aa8e7d7c5d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &9022540136217170737
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -130,7 +82,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &7242381166860987263
+--- !u!114 &4541067949362767470
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -139,10 +91,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1303921836911006770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1ffdb5eb9e986cd4cb2cd0654268afc9, type: 3}
+  m_Script: {fileID: 11500000, guid: e10c829b5470f6e49b197bb4bd7ab52d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  clearAnimation: {fileID: 7400000, guid: 9ca046fc343f3da449800aba81c72e9f, type: 2}
+  customerSprites:
+  - customer: 0
+    sprite: {fileID: 21300000, guid: 63cf8693e8dbf9443b16c607086e2ba7, type: 3}
+  - customer: 1
+    sprite: {fileID: 21300000, guid: c9a9d18177d73b748a6a3bcd314866ad, type: 3}
+  - customer: 2
+    sprite: {fileID: 21300000, guid: 6cc31926bd8098c47af8a5ca5902e537, type: 3}
+  - customer: 3
+    sprite: {fileID: 21300000, guid: eda7d93febf2d5140a6a5d3af6db373e, type: 3}
+  - customer: 4
+    sprite: {fileID: 21300000, guid: da36a6aca41913f40b79e10edf390f9d, type: 3}
+  - customer: 5
+    sprite: {fileID: 21300000, guid: 4498878b23489b441a3ed1125db69dae, type: 3}
 --- !u!1 &8035246234853254340
 GameObject:
   m_ObjectHideFlags: 0
