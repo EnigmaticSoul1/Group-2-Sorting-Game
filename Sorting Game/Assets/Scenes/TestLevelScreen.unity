@@ -146,6 +146,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 65.61314
       objectReference: {fileID: 0}
+    - target: {fileID: 6269416525181609178, guid: 5c9cf85167a3338488f0cf96b8fb7506, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 389651608}
+    - target: {fileID: 6269416525181609178, guid: 5c9cf85167a3338488f0cf96b8fb7506, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6269416525181609179, guid: 5c9cf85167a3338488f0cf96b8fb7506, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -345,7 +353,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 423624163}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -440.3, y: -393.2564, z: -100}
+  m_LocalPosition: {x: -440.39, y: -393.1, z: -100}
   m_LocalScale: {x: 1.3573701, y: 1.3573701, z: 1.3573701}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -364,8 +372,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a19ef0c957ae3c4aa654bf4aab06b0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  xDim: 8
-  yDim: 8
+  xDim: 9
+  yDim: 6
   fillTime: 0.1
   piecePrefabs:
   - type: 0

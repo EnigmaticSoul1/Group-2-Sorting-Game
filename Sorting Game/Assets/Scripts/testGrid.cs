@@ -168,13 +168,13 @@ public class testGrid : MonoBehaviour
 
                 piece1.MovableComponent.Move(piece2.X, piece2.Y, fillTime);
                 piece2.MovableComponent.Move(piece1X, piece1Y, fillTime);
-
+                
                 ClearAllValidMatches();
 
                 StartCoroutine(Fill());
             } else {
                 pieces [piece1.X, piece1.Y] = piece1;
-                pieces [piece2.X, piece2.Y] = piece2;
+                pieces [piece2.X, piece2.Y] = piece1;
             }
         }
     }
@@ -233,14 +233,10 @@ public class testGrid : MonoBehaviour
                 }
             }
 
-            if (horizontalPieces.Count >=  3) {
+            if (horizontalPieces.Count >= 3) {
                 for (int i = 0; i < horizontalPieces.Count; i++) {
                     matchingPieces.Add(horizontalPieces[i]);
                 } 
-            }
-
-            if (matchingPieces.Count >= 3) {
-                return matchingPieces;
             }
 
             //Traverse vertically if we found a match (for L and T shape)
@@ -280,11 +276,15 @@ public class testGrid : MonoBehaviour
                 }
             }
 
+            if (matchingPieces.Count >= 3) {
+                return matchingPieces;
+            }
+
             //Check vertically for matching pieces
             horizontalPieces.Clear();
             verticalPieces.Clear();
-
             verticalPieces.Add(piece);
+
             for (int dir = 0; dir <= 1; dir++) {
                 for (int yOffset = 1; yOffset < yDim; yOffset++) {
                     int y;
@@ -299,8 +299,8 @@ public class testGrid : MonoBehaviour
                         break;
                     }
 
-                    if (pieces[y, newX].isRecipe() && pieces[y, newX].RecipeComponent.Type == recipe) {
-                        horizontalPieces.Add(pieces[y, newX]);
+                    if (pieces[newX, y].isRecipe() && pieces[newX, y].RecipeComponent.Type == recipe) {
+                        verticalPieces.Add(pieces[newX, y]);
                     } else {
                         break;
                     }
@@ -310,7 +310,7 @@ public class testGrid : MonoBehaviour
             if (verticalPieces.Count >=  3) {
                 for (int i = 0; i < verticalPieces.Count; i++) {
                     matchingPieces.Add(verticalPieces[i]);
-                } 
+                }
             }
 
             //Traverse horizontally if we found a match (for L and T shape)
@@ -320,9 +320,9 @@ public class testGrid : MonoBehaviour
                         for (int xOffset = 1; xOffset < xDim; xOffset++) {
                             int x;
 
-                            if (dir == 0) { //Up
+                            if (dir == 0) { //Left
                                 x = newX - xOffset;
-                            } else { //Down
+                            } else { //Right
                                 x = newX + xOffset;
                             }
 
@@ -330,8 +330,8 @@ public class testGrid : MonoBehaviour
                                 break;
                             }
 
-                            if (pieces[verticalPieces[i].Y, x].isRecipe() && pieces[verticalPieces[i].Y, x].RecipeComponent.Type == recipe) {
-                                verticalPieces.Add(pieces[verticalPieces[i].Y, x]);
+                            if (pieces[x, verticalPieces[i].Y].isRecipe() && pieces[x, verticalPieces[i].Y].RecipeComponent.Type == recipe) {
+                                horizontalPieces.Add(pieces[x, verticalPieces[i].Y]);
                             } else {
                                 break;
                             }
