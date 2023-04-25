@@ -151,7 +151,7 @@ public class testGrid : MonoBehaviour
     public bool isAdjacent(recipePiece piece1, recipePiece piece2)
     {
         return (piece1.X == piece2.X && (int)Mathf.Abs(piece1.Y - piece2.Y) == 1)
-        || (piece1.Y == piece2.Y && (int)Mathf.Abs(piece1.X - piece2.Y) == 1);
+        || (piece1.Y == piece2.Y && (int)Mathf.Abs(piece1.X - piece2.X) == 1);
     }
 
     //Swaps the pieces
