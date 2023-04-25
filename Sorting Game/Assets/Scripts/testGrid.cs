@@ -9,6 +9,8 @@ public class testGrid : MonoBehaviour
     public enum PieceType{
         EMPTY,
         NORMAL,
+        ROW_CLEAR,
+        COLUMN_CLEAR,
         COUNT,
     };
 
@@ -170,6 +172,17 @@ public class testGrid : MonoBehaviour
                 piece2.MovableComponent.Move(piece1X, piece1Y, fillTime);
                 
                 ClearAllValidMatches();
+
+                if (piece1.Type == PieceType.ROW_CLEAR || piece1.Type == PieceType.COLUMN_CLEAR){
+                    ClearPiece (piece1.X, piece1.Y);
+                }
+
+                if (piece2.Type == PieceType.ROW_CLEAR || piece2.Type == PieceType.COLUMN_CLEAR){
+                    ClearPiece (piece2.X, piece2.Y);
+                }
+
+                pressedPiece = null;
+                enteredPiece = null;
 
                 StartCoroutine(Fill());
             } else {
@@ -367,9 +380,40 @@ public class testGrid : MonoBehaviour
                     List<recipePiece> match = GetMatch(pieces[x, y], x, y);
 
                     if (match != null) {
+                        PieceType specialPieceType = PieceType.COUNT;
+                        recipePiece randomPiece = match [Random.Range (0, match.Count)];
+                        int specialPieceX = randomPiece.X;
+                        int specialPieceY = randomPiece.Y;
+
+                        if (match.Count == 4) {
+                            if (pressedPiece == null || enteredPiece == null) {
+                                specialPieceType = (PieceType)Random.Range ((int)PieceType.ROW_CLEAR, (int)PieceType.COLUMN_CLEAR);
+                            }
+                            else if (pressedPiece.Y == enteredPiece.Y){
+                                specialPieceType = PieceType.ROW_CLEAR;
+                            }
+                            else {
+                                specialPieceType = PieceType.COLUMN_CLEAR;
+                            }
+                        }
+
                         for (int i = 0; i < match.Count; i++) {
                             if (ClearPiece(match[i].X, match[i].Y)) {
                                 needsRefill = true;
+
+                                if (match [i] == pressedPiece || match [i] == enteredPiece){
+                                    specialPieceX = match [i].X;
+                                    specialPieceY = match [i].Y;
+                                }
+                            }
+                        }
+
+                        if (specialPieceType != PieceType.COUNT){
+                            Destroy (pieces [specialPieceX, specialPieceY]);
+                            recipePiece newPiece = spawnNewPiece (specialPieceX, specialPieceY, specialPieceType);
+
+                            if ((specialPieceType == PieceType.ROW_CLEAR || specialPieceType == PieceType.COLUMN_CLEAR) && newPiece.isRecipe() && match[0].isRecipe ()){
+                                newPiece.RecipeComponent.SetType(match[0].RecipeComponent.Type);
                             }
                         }
                     }
@@ -389,5 +433,19 @@ public class testGrid : MonoBehaviour
         }
 
         return false;
+    }
+
+    //to be used in the clearline file; implements the effects of row clearing powerups
+    public void clearRow(int row){
+        for (int x = 0; x < xDim; x++){
+            ClearPiece (x, row);
+        }
+    }
+
+    //to be used in the clearline file; implements the effects of column clearing powerups
+    public void clearColumn(int column){
+        for (int y = 0; y < yDim; y++){
+            ClearPiece (y, column);
+        }
     }
 }
