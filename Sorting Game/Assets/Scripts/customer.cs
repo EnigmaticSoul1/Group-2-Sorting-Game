@@ -20,5 +20,7 @@ public class customer : MonoBehaviour
         GameObject customer = Instantiate(customerType[index], transform.position, Quaternion.identity);
         customerType[index].transform.parent = gameObject.transform;
         Debug.Log(index);
+
+        
     }
 }
