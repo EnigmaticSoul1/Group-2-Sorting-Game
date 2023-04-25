@@ -241,6 +241,7 @@ GameObject:
   - component: {fileID: 6269416523782207018}
   - component: {fileID: 6269416523782207016}
   - component: {fileID: 6269416523782207019}
+  - component: {fileID: 4536922842872539221}
   m_Layer: 5
   m_Name: Customer Pic
   m_TagString: Untagged
@@ -289,14 +290,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 1}
+  m_Color: {r: 0.9622642, g: 0.9622642, b: 0.9622642, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 63cf8693e8dbf9443b16c607086e2ba7, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -306,6 +307,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4536922842872539221
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269416523782207013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348fa651b99177444b08e82a83f120bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customerType:
+  - {fileID: 1303921836911006770, guid: 262b9305d2ee14f49846828aa097a0a4, type: 3}
+  - {fileID: 1303921836911006770, guid: 9f71491c1adf1374296e6a3e271e254a, type: 3}
+  - {fileID: 1303921836911006770, guid: 21804e67cc3b43946b7a037253166430, type: 3}
+  - {fileID: 1303921836911006770, guid: b06508e5926b5b744a0233cd614975b8, type: 3}
+  - {fileID: 1303921836911006770, guid: 14f5e2ec7b0ccd64891201dd199dae8c, type: 3}
+  - {fileID: 1303921836911006770, guid: c2a002c73e9b0a446b192ada8b4212ab, type: 3}
 --- !u!1 &6269416523918329092
 GameObject:
   m_ObjectHideFlags: 0
@@ -621,6 +641,7 @@ GameObject:
   - component: {fileID: 6269416524368035267}
   - component: {fileID: 6269416524368035265}
   - component: {fileID: 6269416524368035264}
+  - component: {fileID: 7707405352656717068}
   m_Layer: 5
   m_Name: NCustomer Pic
   m_TagString: Untagged
@@ -637,8 +658,8 @@ RectTransform:
   m_GameObject: {fileID: 6269416524368035266}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6269416525119229016}
   m_RootOrder: 0
@@ -669,14 +690,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: eda7d93febf2d5140a6a5d3af6db373e, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -686,6 +707,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7707405352656717068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6269416524368035266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 348fa651b99177444b08e82a83f120bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  customerType:
+  - {fileID: 1303921836911006770, guid: 326f1245bd601864c945f446570c11fe, type: 3}
+  - {fileID: 1303921836911006770, guid: ede1cfd122bf10549acb227b17384337, type: 3}
+  - {fileID: 1303921836911006770, guid: 8030e43062a074240a8d1e663d854f8d, type: 3}
+  - {fileID: 1303921836911006770, guid: c28ae57c49a608e49960d6e6a4e2be78, type: 3}
+  - {fileID: 1303921836911006770, guid: b4d42af78edbd5c4aa54c0c2e65e4ed5, type: 3}
+  - {fileID: 1303921836911006770, guid: b7718af35f2337c4faa2c75ef5606a30, type: 3}
 --- !u!1 &6269416524588059785
 GameObject:
   m_ObjectHideFlags: 0
@@ -1357,7 +1397,7 @@ Canvas:
   m_GameObject: {fileID: 7381739514640013121}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0

@@ -64,13 +64,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   recipeSprites:
   - recipe: 0
-    sprite: {fileID: 21300000, guid: 732745ea52dc3fb41af8b4ce931aa50b, type: 3}
+    sprite: {fileID: 21300000, guid: 98fe023d52154d444b21e3f9c312d6b3, type: 3}
   - recipe: 1
-    sprite: {fileID: 21300000, guid: e865b0dc2b05c0b48b9514c845be8f72, type: 3}
+    sprite: {fileID: 21300000, guid: a145987d1a273204e9a6c6786b885508, type: 3}
   - recipe: 2
-    sprite: {fileID: 21300000, guid: aaef702b094a3124b8dffb3867c83c58, type: 3}
+    sprite: {fileID: 21300000, guid: 6611243c13b14e6488922124df04a432, type: 3}
   - recipe: 3
-    sprite: {fileID: 21300000, guid: 6bdc91bf44ab7ab4185ade15c3c5f964, type: 3}
+    sprite: {fileID: 21300000, guid: a20e37da8c76b9b40b9f53ab92105735, type: 3}
+  - recipe: 4
+    sprite: {fileID: 21300000, guid: e58aa0b3d4aadc247b683aa24f8e080c, type: 3}
+  - recipe: 5
+    sprite: {fileID: 21300000, guid: 0fef946b3faab084da9eb5555ec42283, type: 3}
 --- !u!114 &-3036597633179120145
 MonoBehaviour:
   m_ObjectHideFlags: 0

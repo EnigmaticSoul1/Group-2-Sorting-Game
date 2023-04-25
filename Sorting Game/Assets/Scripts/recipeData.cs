@@ -10,6 +10,8 @@ public class recipeData : MonoBehaviour
         B,
         C,
         D,
+        E,
+        F,
         //haven't included power ups type here
     }
 
