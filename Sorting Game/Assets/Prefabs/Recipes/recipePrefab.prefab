@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orderSprites:
   - order: 3
-    sprite: {fileID: 21300000, guid: a6654f4c7abf1444ea5c61feff0a492b, type: 3}
+    sprite: {fileID: 21300000, guid: cf769654a513e614ab93e15e6bdb0027, type: 3}
 --- !u!1 &6876384805260041363
 GameObject:
   m_ObjectHideFlags: 0
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_SortingLayerID: -737771247
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: a6654f4c7abf1444ea5c61feff0a492b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cf769654a513e614ab93e15e6bdb0027, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

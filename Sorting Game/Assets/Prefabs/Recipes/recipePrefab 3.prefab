@@ -47,7 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   orderSprites:
   - order: 2
-    sprite: {fileID: 21300000, guid: a13bdfceaecd3cd4f89d9db1bf0011d9, type: 3}
+    sprite: {fileID: 21300000, guid: 1344b6fc6569e9343ba7ab2a1514737e, type: 3}
 --- !u!1 &6876384805260041363
 GameObject:
   m_ObjectHideFlags: 0

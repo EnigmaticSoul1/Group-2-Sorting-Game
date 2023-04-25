@@ -19,7 +19,5 @@ public class orderHandler : MonoBehaviour
         GameObject order = Instantiate(orderType[index], transform.position, Quaternion.identity);
         orderType[index].transform.parent = gameObject.transform;
         Debug.Log(index);
-
-        
     }
 }

@@ -10,6 +10,10 @@ public class orderData : MonoBehaviour
         cappuccino,
         milky_way,
         mocha,
+        frappe,
+        rush_hour,
+        cascara,
+        milk_tea,
     }
 
     [System.Serializable]
@@ -34,17 +38,6 @@ public class orderData : MonoBehaviour
     private SpriteRenderer sprite;
 
     private Dictionary<orderType, Sprite> orderSpriteDict;
-
-    // void Awake(){
-    //     sprite = transform.Find("piece").GetComponent<SpriteRenderer> ();
-
-    //     orderSpriteDict = new Dictionary<orderType, Sprite> ();
-    //     for (int i = 0; i < orderSprites.Length; i++) {
-    //         if (!orderSpriteDict.ContainsKey (orderSprites [i].order)) {
-    //             orderSpriteDict.Add (orderSprites[i].order, orderSprites[i].sprite);
-    //         }
-    //     }
-    // }
 
     void Start()
     {
